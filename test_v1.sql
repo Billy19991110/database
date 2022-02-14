@@ -106,7 +106,7 @@ INSERT INTO `picture` (`productID`, `pictureSeat1`, `pictureSeat2`, `pictureSeat
 (4, '/img/手燈/2020早安官燈.jpg', '', '', '', ''),
 (5, '/img/手燈/2021早安官燈.jpg', '', '', '', ''),
 (1, '/img/手燈/48官燈type1_1.jpg', '/img/手燈/48官燈type1_2.jpg', '/img/手燈/48官燈type1_3.jpg', '/img/手燈/48官燈type1_4.jpg', '/img/手燈/48官燈type1_5.jpg'),
-(2, '/img/手燈/48官燈type2_1.jpg', '/img/手燈/48官燈type2_2.jpg', '/img/手燈/48官燈type2_3.jpg', '/img/手燈/48官燈type2_4.jpg', '/img/手燈/48官燈type2_5.jpg'),
+(2, '/img/手燈/48官燈type2_1.jpg', '/img/手燈/48官燈type2_2.jpg', '', '', ''),
 (3, '/img/手燈/48官燈type3_1.jpg', '/img/手燈/48官燈type3_2.jpg', '/img/手燈/48官燈type3_3.jpg', '/img/手燈/48官燈type3_4.jpg', '/img/手燈/48官燈type3_5.jpg'),
 (14, '/img/推巾/15周年單獨con.jpg', '', '', '', ''),
 (15, '/img/推巾/2018感謝祭.jpg', '', '', '', ''),
