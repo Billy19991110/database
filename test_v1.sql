@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2022 年 02 月 10 日 01:28
+-- 產生時間： 2022 年 02 月 21 日 07:25
 -- 伺服器版本： 5.7.34
 -- PHP 版本： 7.4.21
 
@@ -28,32 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `buy` (
-  `userID` int(4) NOT NULL COMMENT '會員ＩＤ',
+  `byID` int(4) NOT NULL COMMENT '主鍵',
+  `userID` int(4) NOT NULL COMMENT '使用者ＩＤ',
   `productID` int(4) NOT NULL COMMENT '產品ＩＤ',
-  `productPrice` int(4) NOT NULL COMMENT '產品價格'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='購買表';
-
--- --------------------------------------------------------
+  `productNUM` int(3) NOT NULL COMMENT '購買個數'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 資料表結構 `class`
+-- 傾印資料表的資料 `buy`
 --
 
-CREATE TABLE `class` (
-  `classID` int(4) NOT NULL COMMENT '類別ＩＤ',
-  `className` varchar(30) NOT NULL COMMENT '類別名稱'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='類別表';
-
---
--- 傾印資料表的資料 `class`
---
-
-INSERT INTO `class` (`classID`, `className`) VALUES
-(1, '手燈'),
-(2, '衣服'),
-(3, '推巾'),
-(4, '推扇'),
-(5, 'DVD');
+INSERT INTO `buy` (`byID`, `userID`, `productID`, `productNUM`) VALUES
+(1, 1, 2, 1),
+(2, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -72,11 +59,7 @@ CREATE TABLE `nation` (
 
 INSERT INTO `nation` (`nationID`, `nationName`) VALUES
 (1, '日本'),
-(2, '韓國'),
-(3, '中國'),
-(4, '歐美'),
-(5, '台灣'),
-(6, '二次元');
+(2, '韓國');
 
 -- --------------------------------------------------------
 
@@ -146,7 +129,6 @@ INSERT INTO `picture` (`productID`, `pictureSeat1`, `pictureSeat2`, `pictureSeat
 
 CREATE TABLE `product` (
   `productID` int(4) NOT NULL COMMENT '產品ＩＤ',
-  `classID` int(4) NOT NULL COMMENT '類別ＩＤ',
   `nationID` int(4) NOT NULL COMMENT '國家ＩＤ',
   `productName` varchar(30) NOT NULL COMMENT '產品名稱',
   `productPrice` int(4) NOT NULL COMMENT '產品價格'
@@ -156,46 +138,46 @@ CREATE TABLE `product` (
 -- 傾印資料表的資料 `product`
 --
 
-INSERT INTO `product` (`productID`, `classID`, `nationID`, `productName`, `productPrice`) VALUES
-(1, 1, 1, '48官燈', 200),
-(2, 1, 1, '48官燈', 200),
-(3, 1, 1, '48官燈', 200),
-(4, 1, 1, '2020早安官燈', 300),
-(5, 1, 1, '2021早安官燈', 300),
-(6, 2, 1, '15周年單獨con', 500),
-(7, 2, 1, '2018單獨con', 500),
-(8, 2, 1, '2019全國tour', 500),
-(9, 2, 1, '2022新春con', 500),
-(10, 2, 1, '早安聯名T', 500),
-(11, 2, 1, '第10回總選T', 500),
-(12, 2, 1, 'STU4周年T', 500),
-(13, 2, 1, 'STU武道館con', 500),
-(14, 3, 1, '15周年單獨con', 300),
-(15, 3, 1, '2018感謝祭', 300),
-(16, 3, 1, '2019全國tour', 300),
-(17, 3, 1, '2019春con', 300),
-(18, 3, 1, '2020新體感live', 300),
-(19, 3, 1, '2020RH', 300),
-(20, 3, 1, '2022新春con', 300),
-(21, 3, 1, '早安聯名推巾', 300),
-(22, 3, 1, '第8回紅白', 300),
-(23, 3, 1, '第10回總選', 300),
-(24, 3, 1, 'STU4周年推巾', 300),
-(25, 3, 1, 'STU2021聖誕個別推巾', 300),
-(26, 3, 1, 'STU武道館con推巾', 300),
-(27, 3, 1, 'STU船公演推巾', 300),
-(28, 4, 1, 'STU2021聖誕推扇', 300),
-(29, 4, 1, 'STU大正個人推扇', 300),
-(30, 4, 1, 'T4推扇', 300),
-(31, 4, 1, 'T8推扇', 300),
-(32, 4, 1, 'TA推扇', 300),
-(33, 4, 1, 'TB推扇', 300),
-(34, 4, 1, 'TK推扇', 300),
-(35, 5, 1, '15周年con', 1000),
-(36, 5, 1, '2015小島祭', 1000),
-(37, 5, 1, '2019單獨con', 1000),
-(38, 5, 1, '第10回總選', 1000),
-(39, 5, 1, '第8回紅白', 1000);
+INSERT INTO `product` (`productID`, `nationID`, `productName`, `productPrice`) VALUES
+(1, 1, '48官燈', 200),
+(2, 1, '48官燈', 200),
+(3, 1, '48官燈', 200),
+(4, 1, '2020早安官燈', 300),
+(5, 1, '2021早安官燈', 300),
+(6, 1, '15周年單獨con', 500),
+(7, 1, '2018單獨con', 500),
+(8, 1, '2019全國tour', 500),
+(9, 1, '2022新春con', 500),
+(10, 1, '早安聯名T', 500),
+(11, 1, '第10回總選T', 500),
+(12, 1, 'STU4周年T', 500),
+(13, 1, 'STU武道館con', 500),
+(14, 1, '15周年單獨con', 300),
+(15, 1, '2018感謝祭', 300),
+(16, 1, '2019全國tour', 300),
+(17, 1, '2019春con', 300),
+(18, 1, '2020新體感live', 300),
+(19, 1, '2020RH', 300),
+(20, 1, '2022新春con', 300),
+(21, 1, '早安聯名推巾', 300),
+(22, 1, '第8回紅白', 300),
+(23, 1, '第10回總選', 300),
+(24, 1, 'STU4周年推巾', 300),
+(25, 1, 'STU2021聖誕個別推巾', 300),
+(26, 1, 'STU武道館con推巾', 300),
+(27, 1, 'STU船公演推巾', 300),
+(28, 1, 'STU2021聖誕推扇', 300),
+(29, 1, 'STU大正個人推扇', 300),
+(30, 1, 'T4推扇', 300),
+(31, 1, 'T8推扇', 300),
+(32, 1, 'TA推扇', 300),
+(33, 1, 'TB推扇', 300),
+(34, 1, 'TK推扇', 300),
+(35, 1, '15周年con', 1000),
+(36, 1, '2015小島祭', 1000),
+(37, 1, '2019單獨con', 1000),
+(38, 1, '第10回總選', 1000),
+(39, 1, '第8回紅白', 1000);
 
 -- --------------------------------------------------------
 
@@ -228,15 +210,9 @@ INSERT INTO `user` (`userID`, `userName`, `userPhone`) VALUES
 -- 資料表索引 `buy`
 --
 ALTER TABLE `buy`
+  ADD PRIMARY KEY (`byID`),
   ADD KEY `userID` (`userID`),
-  ADD KEY `productID` (`productID`),
-  ADD KEY `productPrice` (`productPrice`);
-
---
--- 資料表索引 `class`
---
-ALTER TABLE `class`
-  ADD PRIMARY KEY (`classID`);
+  ADD KEY `productID` (`productID`);
 
 --
 -- 資料表索引 `nation`
@@ -257,7 +233,6 @@ ALTER TABLE `picture`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`productID`),
-  ADD KEY `classID` (`classID`),
   ADD KEY `nationID` (`nationID`),
   ADD KEY `productPrice` (`productPrice`);
 
@@ -272,10 +247,10 @@ ALTER TABLE `user`
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `class`
+-- 使用資料表自動遞增(AUTO_INCREMENT) `buy`
 --
-ALTER TABLE `class`
-  MODIFY `classID` int(4) NOT NULL AUTO_INCREMENT COMMENT '類別ＩＤ', AUTO_INCREMENT=6;
+ALTER TABLE `buy`
+  MODIFY `byID` int(4) NOT NULL AUTO_INCREMENT COMMENT '主鍵', AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `nation`
@@ -304,8 +279,7 @@ ALTER TABLE `user`
 --
 ALTER TABLE `buy`
   ADD CONSTRAINT `buy_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `buy_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `picture` (`productID`),
-  ADD CONSTRAINT `buy_ibfk_3` FOREIGN KEY (`productPrice`) REFERENCES `product` (`productPrice`);
+  ADD CONSTRAINT `buy_ibfk_2` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
 
 --
 -- 資料表的限制式 `picture`
@@ -317,7 +291,6 @@ ALTER TABLE `picture`
 -- 資料表的限制式 `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`classID`) REFERENCES `class` (`classID`),
   ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`nationID`) REFERENCES `nation` (`nationID`);
 COMMIT;
 
